@@ -1,3 +1,3 @@
 # tutoaula
 
-a [Sails](http://sailsjs.org) application
+Backend dise;ado para el proyecto TutoAula

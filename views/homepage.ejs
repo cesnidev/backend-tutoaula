@@ -1,0 +1,661 @@
+<script type="text/javascript">
+setTimeout(function sunrise () {
+  document.getElementsByClassName('header')[0].style.backgroundColor = '#59B8E6';
+}, 0);
+</script>
+
+<div class="default-page">
+  <div class="header">
+    <h1 id="main-title" class="container"><%= __('TutoAula API') %></h1>
+    <h3 class="container">Estado: <code>DESARROLLO</code></h3>
+  </div>
+  <div class="main container clearfix">
+    <ul class="getting-started">
+        <li class="clearfix">
+            <div class="route">
+              <div class="method post">API</div>
+              <h3><code>ENDPOINT</code></h3>
+              <div class="data">
+                  <pre class="info">
+  <code>http://api-tutoaula.sytes.net:1337/</code>
+                  </pre>
+              </div>
+              
+            </div>
+          </li>
+        <li class="clearfix">
+            <div class="route">
+              <div class="method post">AngularJS</div>
+              <h3><code>$HTTP</code></h3>
+              <div class="data">
+                  <p>GET:</p>
+                  <pre class="info">
+  <code>$http.get("RUTA",{headers:{token:"TOKEN"}}).then(...);</code>
+                  </pre>
+                  <p>POST:</p>
+                  <pre class="info">
+  <code>$http.post("RUTA",{DATA},{headers:{token:"TOKEN"}}).then(...);</code>
+                  </pre>
+              </div>
+              
+            </div>
+          </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">POST</div>
+          <h3><code>Ruta: /auth/login</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {}
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {
+    username: "demo",
+    password: "pass1234"
+  }
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    data:{
+      usuario: {
+        "rol": {
+            "id": 1,
+            "tipo": "Estudiante",
+        },
+        "username": "demo",
+        "email": "demo@hotmail.com",
+        "createdAt": "2018-03-13T21:10:44.000Z",
+        "updatedAt": "2018-03-13T21:10:44.000Z",
+        "POSIBLES_OTROS_CAMPOS"..
+      },
+      token: "TOKENABC123"
+    },
+    errors:[{error:"ERR_XX",msg:"ERROR..."}] //SI EXISTE ALGUNO
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">&nbsp;</pre>
+          </div>
+          
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">POST</div>
+          <h3><code>Ruta: /auth/register</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {}
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {
+    username: "demo",
+    password: "pass1234",
+    email: "demo@hotmail.com",
+    tipo: [1 Estudiante | 2 Maestro/Admin]
+  }
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    data:{
+      usuario: {
+        "rol": {
+            "id": 1,
+            "tipo": "Estudiante",
+        },
+        "username": "demo",
+        "email": "demo@hotmail.com",
+        "createdAt": "2018-03-13T21:10:44.000Z",
+        "updatedAt": "2018-03-13T21:10:44.000Z",
+        "POSIBLES_OTROS_CAMPOS"..
+      },
+      token: "TOKENABC123"
+    },
+    errors:[{error:"ERR_XX",msg:"ERROR..."}] //SI EXISTE ALGUNO
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p>el valor "token" se utilizara en los "headers" <br> para todas las futuras peticiones</p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Tema/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "ejercicios": [
+          {
+            "id": 1,
+            "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+            "respuesta": "6400 manzanas",
+            "imagen": "noimage.png",
+            "grado": 1,
+            "escolaridad_id": 1,
+            "idioma_id": 1,
+            "tema_id": 1,
+            "seccion_id": 1,
+            "updatedAt": "2018-04-17T14:46:48.000Z",
+            "createdAt": "2018-04-17T14:46:48.000Z"
+          },...
+        ],
+        "secciones": [
+          {
+            "id": 1,
+            "titulo": "a.\tMultiplicación por números de dos o más cifras.",
+            "tema_id": 1,
+            "updatedAt": "2018-04-17T14:46:48.000Z",
+            "createdAt": "2018-04-17T14:46:48.000Z"
+          }
+        ],
+        "id": 1,
+        "titulo": "1.\tSuma, resta y multiplicación de números naturales.",
+        "createdAt": "2018-04-17T14:46:48.000Z",
+        "updatedAt": "2018-04-17T14:46:48.000Z"
+      }
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Seccion/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "ejercicios": [
+          {
+            "id": 1,
+            "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+            "respuesta": "6400 manzanas",
+            "imagen": "noimage.png",
+            "grado": 1,
+            "escolaridad_id": 1,
+            "idioma_id": 1,
+            "tema_id": 1,
+            "seccion_id": 1,
+            "updatedAt": "2018-04-17T14:46:48.000Z",
+            "createdAt": "2018-04-17T14:46:48.000Z"
+          },...
+        ],
+        "tema_id": {
+          "id": 1,
+          "titulo": "1.\tSuma, resta y multiplicación de números naturales.",
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z"
+        },
+        "id": 1,
+        "titulo": "a.\tMultiplicación por números de dos o más cifras.",
+        "createdAt": "2018-04-17T14:46:48.000Z",
+        "updatedAt": "2018-04-17T14:46:48.000Z"
+      }
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Ejercicio/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "respuestas": [
+          {
+            "id": 1,
+            "descripcion": "a)6400 manzanas",
+            "imagen": "noimage.png",
+            "ejercicio_id": 1,
+            "updatedAt": "2018-04-17T14:46:48.000Z",
+            "createdAt": "2018-04-17T14:46:48.000Z"
+          },...
+        ],
+        "escolaridad_id": {
+          "id": 1,
+          "tipo": "Primaria",
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z"
+        },
+        "idioma_id": {
+          "id": 1,
+          "idioma": "Espanol",
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z"
+        },
+        "tema_id": {
+          "id": 1,
+          "titulo": "1.\tSuma, resta y multiplicación de números naturales.",
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z"
+        },
+        "seccion_id": {
+          "id": 1,
+          "titulo": "a.\tMultiplicación por números de dos o más cifras.",
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "tema_id": 1
+        },
+        "id": 1,
+        "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+        "respuesta": "6400 manzanas",
+        "imagen": "noimage.png",
+        "grado": 1,
+        "createdAt": "2018-04-17T14:46:48.000Z",
+        "updatedAt": "2018-04-17T14:46:48.000Z"
+      }
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Respuesta/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "ejercicio_id": {
+          "id": 1,
+          "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+          "respuesta": "6400 manzanas",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 1,
+        "descripcion": "a)6400 manzanas",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:48.000Z",
+        "updatedAt": "2018-04-17T14:46:48.000Z"
+      },
+      {
+        "ejercicio_id": {
+          "id": 1,
+          "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+          "respuesta": "6400 manzanas",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 2,
+        "descripcion": "b)6000 manzanas",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:48.000Z",
+        "updatedAt": "2018-04-17T14:46:48.000Z"
+      },
+      {
+        "ejercicio_id": {
+          "id": 1,
+          "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+          "respuesta": "6400 manzanas",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 3,
+        "descripcion": "c)4600 manzanas",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:49.000Z",
+        "updatedAt": "2018-04-17T14:46:49.000Z"
+      },
+      {
+        "ejercicio_id": {
+          "id": 1,
+          "pregunta": "En una finca hay 256 árboles, si cada uno tiene 25 manzanas. ¿Cuántas manzanas hay en total?",
+          "respuesta": "6400 manzanas",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 4,
+        "descripcion": "d)5000 manzanas",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:49.000Z",
+        "updatedAt": "2018-04-17T14:46:49.000Z"
+      },
+      {
+        "ejercicio_id": {
+          "id": 2,
+          "pregunta": "Una caja contiene 30 abanicos. ¿Cuántos abanicos habrá en 25 cajas?.",
+          "respuesta": "725 abanicos",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 5,
+        "descripcion": "a) 725 abanicos",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:49.000Z",
+        "updatedAt": "2018-04-17T14:46:49.000Z"
+      },
+      {
+        "ejercicio_id": {
+          "id": 2,
+          "pregunta": "Una caja contiene 30 abanicos. ¿Cuántos abanicos habrá en 25 cajas?.",
+          "respuesta": "725 abanicos",
+          "imagen": "noimage.png",
+          "grado": 1,
+          "createdAt": "2018-04-17T14:46:48.000Z",
+          "updatedAt": "2018-04-17T14:46:48.000Z",
+          "escolaridad_id": 1,
+          "idioma_id": 1,
+          "tema_id": 1,
+          "seccion_id": 1
+        },
+        "id": 6,
+        "descripcion": "b) 724 abanicos",
+        "imagen": "noimage.png",
+        "createdAt": "2018-04-17T14:46:49.000Z",
+        "updatedAt": "2018-04-17T14:46:49.000Z"
+      }
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Escolaridad/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "id": 1,
+        "tipo": "Primaria",
+        "createdAt": "2018-03-18T00:06:17.000Z",
+        "updatedAt": "2018-03-18T00:06:17.000Z"
+      }...
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Idioma/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "id": 1,
+        "idioma": "Nahuatl",
+        "createdAt": "2018-03-18T00:06:18.000Z",
+        "updatedAt": "2018-03-18T00:06:18.000Z"
+      }...
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Rol/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "usuarios": [
+          {
+            "id": 1,
+            "username": "cesni",
+            "email": "demo@hotmail.com",
+            "rol_id": 1,
+            "updatedAt": "2018-03-18T00:54:02.000Z",
+            "createdAt": "2018-03-18T00:06:20.000Z"
+          }...
+        ],
+        "id": 1,
+        "tipo": "Estudiante",
+        "createdAt": "2018-03-18T00:06:17.000Z",
+        "updatedAt": "2018-03-18T00:06:17.000Z"
+      },
+      {
+        "usuarios": [],
+        "id": 2,
+        "tipo": "Administrador",
+        "createdAt": "2018-03-18T00:06:17.000Z",
+        "updatedAt": "2018-03-18T00:06:17.000Z"
+      }
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="route">
+          <div class="method post">GET</div>
+          <h3><code>Ruta: /Usuario/</code></h3>
+          <div class="data">
+              <p>Headers:</p>
+              <pre class="info">
+  {
+    headers: {
+      Authorization: token //EL TOKEN RETORNADO CUANDO INVOCAS /AUTH/LOGIN O /AUTH/REGISTER
+    }
+  }
+              </pre>
+              <p>Peticion:</p>
+                <pre class="info">
+  {}
+                </pre>
+              <p>Respuesta:</p>
+              <pre class="info">
+  {
+    "data": [
+      {
+        "rol_id": {
+          "id": 1,
+          "tipo": "Estudiante",
+          "createdAt": "2018-03-18T00:06:17.000Z",
+          "updatedAt": "2018-03-18T00:06:17.000Z"
+        },
+        "id": 1,
+        "username": "demo",
+        "email": "demo@hotmail.com",
+        "createdAt": "2018-03-18T00:06:20.000Z",
+        "updatedAt": "2018-03-18T00:54:02.000Z"
+      }...
+    ],
+    "errors": []
+  }
+              </pre>
+              <p>Notas:</p>
+              <pre class="info">
+                <p></p> 
+              </pre> 
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
